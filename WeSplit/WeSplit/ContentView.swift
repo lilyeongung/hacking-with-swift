@@ -16,7 +16,7 @@ struct ContentView: View {
     @FocusState private var amountIsFocused: Bool
     
     // Not everyone wants to pay same tip percentage
-//    let tipPercentages = [10, 15, 20, 25, 0]
+    let tipPercentages = [10, 15, 20, 25, 0]
     
     var totalPerPerson: Double {
         // Remember, this thing has the range 2 to 100, but it counts from 0, which is why we need to add the 2.
@@ -59,12 +59,12 @@ struct ContentView: View {
                 
                 Section("How much do you want to tip?") {
                     Picker("Tip percentage", selection: $tipPercentage) {
-//                      ForEach(tipPercentages, id: \.self) {
-                        ForEach(1..<101, id: \.self) {
+                      ForEach(tipPercentages, id: \.self) {
+//                        ForEach(1..<101, id: \.self) {
                             Text($0, format: .percent)
                         }
                     }
-//                    .pickerStyle(.segment)
+                    .pickerStyle(.segmented)
                 }
             
                 Section("Amount per person") {
